@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="HGTA3X" name="hw4" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn">
   <MAINGROUP id="Nrde4S" name="hw4">
     <GROUP id="{8B38010C-1826-1A81-3EAE-BD10C427DD2D}" name="Source">
-      <FILE id="UXspxp" name="PluginProcessor.cpp" compile="1" resource="0"
-            file="Source/PluginProcessor.cpp"/>
+      <FILE id="ZF2HPv" name="MIDISynth.h" compile="0" resource="0" file="Source/MIDISynth.h"/>
+      <FILE id="Nq6jlI" name="MIDISynth.cpp" compile="1" resource="0" file="Source/MIDISynth.cpp"/>
       <FILE id="GfsWqM" name="PluginProcessor.h" compile="0" resource="0"
             file="Source/PluginProcessor.h"/>
+      <FILE id="UXspxp" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="pyGm5z" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
       <FILE id="MeIdzo" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
-      <FILE id="pyGm5z" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
   </MAINGROUP>
   <MODULES>
