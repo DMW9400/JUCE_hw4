@@ -26,7 +26,10 @@ public:
     void setReleased();
     void updateTone();
     void processSample(float& sample);
-    bool shouldBeRemoved();
+    bool shouldBeRemoved() const;
+    
+    double getFrequency() const { return frequency; }
+
     
 private:
     WaveType waveType;
