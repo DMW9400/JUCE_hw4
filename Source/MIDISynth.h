@@ -60,3 +60,37 @@ private:
     double ATTACK_FACTOR, DECAY_FACTOR;
 };
 
+Tone::Tone(float frequency, float velocity, WaveType waveType, double sampleRate)
+    :waveType(waveType),
+    frequency(static_cast<double>(frequency)),
+    isReleased(false),
+    gain(0.01),
+    velocity(static_cast<double>(velocity)),
+    counter(0),
+    sampleRate(sampleRate)
+{
+    
+}
+Tone::~Tone(){
+    
+}
+
+void Tone::setSampleRate(double newSampleRate) {
+    sampleRate = newSampleRate;
+}
+
+void Tone::setWaveType(WaveType newWaveType) {
+    waveType = newWaveType;
+}
+
+void Tone::setFrequency(double newFrequency) {
+    frequency = newFrequency;
+}
+
+void Tone::setGain(double newGain) {
+    gain = newGain;
+}
+
+void Tone::setReleased() {
+    isReleased = true;
+}
