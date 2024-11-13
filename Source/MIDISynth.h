@@ -58,6 +58,9 @@ public:
     void noteOff(float frequency);
     void renderBuffer(juce::AudioBuffer<float>& buffer);
     
+    Tone::WaveType getCurrentWaveType() const { return wavetype; }
+
+    
 private:
     std::vector<std::unique_ptr<Tone>> tones;
     Tone::WaveType wavetype;
