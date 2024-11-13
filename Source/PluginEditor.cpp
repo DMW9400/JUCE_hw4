@@ -25,12 +25,13 @@ Hw4AudioProcessorEditor::~Hw4AudioProcessorEditor()
 //==============================================================================
 void Hw4AudioProcessorEditor::paint (juce::Graphics& g)
 {
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
+    // Fill background
+       g.fillAll (juce::Colours::black);
 
-    g.setColour (juce::Colours::white);
-    g.setFont (juce::FontOptions (15.0f));
-    g.drawFittedText ("Hello World!", getLocalBounds(), juce::Justification::centred, 1);
+       // Draw a simple message
+       g.setColour (juce::Colours::white);
+       g.setFont (15.0f);
+       g.drawFittedText ("MIDI Synthesizer", getLocalBounds(), juce::Justification::centred, 1);
 }
 
 void Hw4AudioProcessorEditor::resized()
