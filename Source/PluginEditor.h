@@ -15,7 +15,8 @@
 //==============================================================================
 /**
 */
-class Hw4AudioProcessorEditor  : public juce::AudioProcessorEditor
+class Hw4AudioProcessorEditor  : public juce::AudioProcessorEditor,
+                                 public juce::Slider::Listener
 {
 public:
     Hw4AudioProcessorEditor (Hw4AudioProcessor&);
@@ -24,11 +25,16 @@ public:
     //==============================================================================
     void paint (juce::Graphics&) override;
     void resized() override;
+    
+    void sliderValueChanged(juce::Slider* slider) override;
 
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     Hw4AudioProcessor& audioProcessor;
+    
+    juce::Slider masterGainSlider;
+    juce::Label masterGainLabel;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Hw4AudioProcessorEditor)
 };
