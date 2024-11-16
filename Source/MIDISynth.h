@@ -59,6 +59,8 @@ public:
     void renderBuffer(juce::AudioBuffer<float>& buffer);
     
     Tone::WaveType getCurrentWaveType() const { return wavetype; }
+    void setMasterGain(float newMasterGain) { masterGain = newMasterGain; }
+
 
     
 private:
@@ -66,5 +68,7 @@ private:
     Tone::WaveType wavetype;
     double sampleRate;
     double ATTACK_FACTOR, DECAY_FACTOR;
+    
+    float masterGain; // Master gain scaling factor
 };
 

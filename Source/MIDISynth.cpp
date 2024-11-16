@@ -14,7 +14,7 @@ Tone::Tone(float frequency, float velocity, WaveType waveType, double sampleRate
     :waveType(waveType),
     frequency(static_cast<double>(frequency)),
     isReleased(false),
-    gain(0.000005),
+    gain(.1),
     velocity(static_cast<double>(velocity)),
     counter(0),
     sampleRate(sampleRate),
@@ -61,10 +61,6 @@ void Tone::updateTone() {
         // Release Phase: Decrease gain
         gain *= decayFactor;
 
-        // Optional: Clamp gain to not go below zero
-        if (gain <= 0.0) {
-            gain = 0.0;
-        }
     }
 }
 
@@ -108,14 +104,18 @@ float Tone::generateWaveSample() {
 
 // Process Sample
 void Tone::processSample(float& sample) {
+    
+    // Update the gain based on the envelope
+    updateTone();
+    
     // Generate the current wave sample and update the counter
     float waveSample = generateWaveSample();
 
     // Add the wave sample to the provided sample
     sample += waveSample;
 
-    // Update the gain based on the envelope
-    updateTone();
+//    // Update the gain based on the envelope
+//    updateTone();
 }
 
 // Should Be Removed
@@ -128,9 +128,9 @@ ToneBank::ToneBank()
     : wavetype(Tone::Sine),    // Default wave type
       sampleRate(44100.0),     // Default sample rate
       ATTACK_FACTOR(1.05),     // Example value; adjust as needed
-      DECAY_FACTOR(0.95)       // Example value; adjust as needed
+      DECAY_FACTOR(0.95),       // Example value; adjust as needed
+      masterGain(.0001f)
 {
-    // Additional initialization if necessary
 }
 
 // Destructor Definition
@@ -160,9 +160,7 @@ void ToneBank::setWaveType(Tone::WaveType waveType) {
 void ToneBank::noteOn(float frequency, float velocity, Tone::WaveType waveType) {
     // Check polyphony limit (5 tones)
     if (tones.size() >= 5) {
-        // Voice stealing strategy can be implemented here
-        // For simplicity, we'll ignore the new note
-        return;
+        tones.erase(tones.begin());
     }
 
     // Check if the tone is already playing (based on frequency)
@@ -226,4 +224,6 @@ void ToneBank::renderBuffer(juce::AudioBuffer<float>& buffer) {
         buffer.setSample(0, sample, mixedSample); // Left channel
         buffer.setSample(1, sample, mixedSample); // Right channel
     }
+    
+    buffer.applyGain(masterGain);
 }
