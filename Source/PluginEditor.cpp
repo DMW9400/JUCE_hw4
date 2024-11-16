@@ -36,6 +36,18 @@ Hw4AudioProcessorEditor::Hw4AudioProcessorEditor (Hw4AudioProcessor& p)
     addAndMakeVisible(masterGainLabel);
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
+    
+    waveformInstructionsLabel.setText(
+        "Waveform Selection:\n"
+        "C3: Sine Wave\n"
+        "D3: Square Wave\n"
+        "E3: Sawtooth Wave",
+        juce::dontSendNotification);
+    waveformInstructionsLabel.setJustificationType(juce::Justification::centred);
+    waveformInstructionsLabel.setFont(juce::Font(14.0f));
+    waveformInstructionsLabel.setColour(juce::Label::textColourId, juce::Colours::white);
+    addAndMakeVisible(waveformInstructionsLabel);
+    
     setSize (400, 300);
 }
 
@@ -69,6 +81,6 @@ void Hw4AudioProcessorEditor::paint (juce::Graphics& g)
 void Hw4AudioProcessorEditor::resized()
 {
     masterGainSlider.setBounds(100, 100, 200, 20);
-    // This is generally where you'll want to lay out the positions of any
-    // subcomponents in your editor..
+    waveformInstructionsLabel.setBounds(50, 150, 300, 100);
+
 }

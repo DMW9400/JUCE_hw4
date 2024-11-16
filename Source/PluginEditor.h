@@ -35,6 +35,9 @@ private:
     
     juce::Slider masterGainSlider;
     juce::Label masterGainLabel;
+    
+    juce::Label waveformInstructionsLabel;
+
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Hw4AudioProcessorEditor)
 };
