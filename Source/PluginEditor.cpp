@@ -68,6 +68,7 @@ void Hw4AudioProcessorEditor::paint (juce::Graphics& g)
 
 void Hw4AudioProcessorEditor::resized()
 {
+    masterGainSlider.setBounds(100, 100, 200, 20);
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
 }
