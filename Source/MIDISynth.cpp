@@ -14,7 +14,7 @@ Tone::Tone(float frequency, float velocity, WaveType waveType, double sampleRate
     :waveType(waveType),
     frequency(static_cast<double>(frequency)),
     isReleased(false),
-    gain(0.01),
+    gain(0.000005),
     velocity(static_cast<double>(velocity)),
     counter(0),
     sampleRate(sampleRate),
